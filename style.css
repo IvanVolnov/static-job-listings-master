@@ -8,7 +8,7 @@
   --color-very-dark: hsl(180, 14%, 20%);
   --color-content-block: white;
 }
-
+/* RESET CSS */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +18,10 @@
 html {
   box-sizing: border-box;
 }
-
+a:visited {
+  color: inherit;
+}
+/* Start of setting */
 body {
   min-height: 100vh;
   width: 100vw;
@@ -35,27 +38,82 @@ body {
   font-family: "League Spartan", sans-serif;
   font-size: 93.8%;
 }
-/* TEXT */
+/* Utilities */
+.hidden {
+  display: none;
+}
+/* Clear button */
+#clear-filter {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-dark-grayish);
+}
+#clear-filter:hover,
+#clear-filter:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+/* TAGS */
 .tag {
   color: var(--color-primary);
   background-color: var(--color-background);
-  border: 1px solid var(--color-background);
+  border: 0px solid var(--color-background);
   border-radius: 5px;
   font-weight: 700;
   font-size: 106.3%;
   padding: 0.4em;
 }
+.tag:hover,
+.tag:focus-visible {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  cursor: pointer;
+}
+.filter {
+  background: linear-gradient(
+    -90deg,
+    var(--color-primary) 0%,
+    var(--color-primary) 2em,
+    var(--color-background) 1.2em,
+    var(--color-background) 100%
+  );
+  padding-right: 0em;
+  pointer-events: none;
+}
+.filter::after {
+  content: url(images/icon-remove.svg);
+  position: relative;
+  /* background-color: black; */
+  top: 0.15em;
+  margin-left: 0.7em;
+  /* padding-right: 0.2em; */
+  padding: 0.8em 0.6em 0.4em 0.5em;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.filter:hover {
+  color: var(--color-primary);
+  background: linear-gradient(
+    -90deg,
+    var(--color-very-dark) 0%,
+    var(--color-very-dark) 2em,
+    var(--color-background) 1.2em,
+    var(--color-background) 100%
+  );
+}
 /* LISTS */
 ul {
   list-style: none;
 }
-.tags-list {
+#tags-list {
   display: flex;
-  gap: 1em;
+  gap: 1.1em;
   flex-wrap: wrap;
 }
 /*BLOCKS */
 .content-block {
+  /* TODO: adapt horiontal padding to small resolutions */
   padding: 1.2rem 2.2rem;
   display: flex;
   background-color: var(--color-content-block);
@@ -84,7 +142,30 @@ main {
 }
 
 .job-offer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   border-left-color: var(--color-primary);
+}
+
+/* JOB Content */
+.company-logo {
+  width: 6em;
+  height: 6em;
+  /* margin-left: -200px; */
+}
+.job-info {
+  display: flex;
+  flex-direction: column;
+}
+.job-name {
+  display: block;
+}
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
 }
 
 /* FOOTER */
