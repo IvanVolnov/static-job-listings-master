@@ -152,6 +152,7 @@ main {
   flex-direction: row;
   gap: 1.5em;
   justify-content: center;
+  margin-right: 1rem;
 }
 
 /* JOB Content */
@@ -211,11 +212,15 @@ h1 {
 .property {
   color: var(--color-dark-grayish);
   font-size: 1.1rem;
+  white-space: nowrap;
 }
 
 .property:nth-child(n + 2)::before {
   content: "·";
   padding-right: 0.88em;
+}
+hr {
+  display: none;
 }
 .tags-list {
   display: flex;
@@ -234,4 +239,17 @@ footer {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (max-width: 1100px) {
+  .content-block {
+    padding: 1.25rem 0.9rem;
+  }
+
+  .job-offer {
+    flex-direction: column;
+  }
+  .info-container {
+    flex-direction: column;
+  }
 }
