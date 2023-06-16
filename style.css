@@ -105,14 +105,18 @@ body {
   );
 }
 /* LISTS */
-#tags-list {
+.tags-list {
+  display: flex;
+  gap: 1.4em;
+  flex-wrap: wrap;
+}
+.tags-list__filters {
   display: flex;
   gap: 1.1em;
   flex-wrap: wrap;
 }
 /*BLOCKS */
 .content-block {
-  /* TODO: adapt horiontal padding to small resolutions */
   padding: 1.2rem 2.2rem;
   display: flex;
   background-color: var(--color-content-block);
@@ -135,8 +139,8 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  margin-top: 2.6rem;
-  gap: 70px;
+  margin-top: 2.5rem;
+  gap: 1.9rem;
 }
 
 .job-offer {
@@ -211,7 +215,7 @@ h1 {
 
 .property {
   color: var(--color-dark-grayish);
-  font-size: 1.1rem;
+  font-size: 1.1em;
   white-space: nowrap;
 }
 
@@ -219,8 +223,9 @@ h1 {
   content: "·";
   padding-right: 0.88em;
 }
-hr {
+.separator {
   display: none;
+  border: 1px solid var(--color-dark-grayish);
 }
 .tags-list {
   display: flex;
@@ -241,15 +246,86 @@ footer {
   color: hsl(228, 45%, 44%);
 }
 
-@media only screen and (max-width: 1100px) {
+/* MEDIA */
+
+@media only screen and (max-width: 900px) {
   .content-block {
-    padding: 1.25rem 0.9rem;
+    padding: 1.25rem 1.2rem 1.25rem 0.9rem;
+  }
+  /* Filter block */
+  .tags-list__filters {
+    gap: 1em;
+  }
+  /* Job offer block */
+  main {
+    margin-top: 3.3rem;
+    /* gap: 70px; */
   }
 
   .job-offer {
     flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem 1.2rem 1.25rem 1.2rem;
+    gap: 1.2em;
   }
   .info-container {
     flex-direction: column;
+    gap: 0.5em;
+  }
+  .job-info {
+    gap: 0.63rem;
+  }
+  .company-logo {
+    margin-top: -2.8em;
+    height: 3.3em;
+    width: 3.3em;
+  }
+  h1 {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    padding-right: 0.6rem;
+  }
+  .job-name {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25em;
+  }
+  .properties-list {
+    gap: 0.74em;
+  }
+  .property {
+    letter-spacing: 0.02em;
+    font-size: 1em;
+  }
+  .property:nth-child(n + 2)::before {
+    content: "·";
+    padding-right: 0.68em;
+  }
+  .separator {
+    display: block;
+    width: 100%;
+  }
+  .tags-list {
+    gap: 1.2em;
+  }
+  .tag {
+    padding: 0.4em 0.51em;
+    letter-spacing: 0.001em;
+  }
+  .filter {
+    padding-right: 0em;
+    letter-spacing: 0.002em;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  body {
+    background: top right no-repeat url(images/bg-header-mobile.svg),
+      linear-gradient(
+        var(--color-primary) 0%,
+        var(--color-primary) 156px,
+        var(--color-background) 156px,
+        var(--color-background) 100%
+      );
   }
 }
