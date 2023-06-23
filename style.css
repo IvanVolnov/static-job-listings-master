@@ -147,9 +147,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-left-color: var(--color-primary);
+
   min-height: 9.5rem;
-  /* padding-top: 1rem; */
+}
+.job-offer__featured {
+  border-left-color: var(--color-primary);
 }
 .info-container {
   display: flex;
