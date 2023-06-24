@@ -50,13 +50,25 @@ const generateMarkup = function (el) {
   <hr class="separator" />
   <ul class="tags-list">
     <li class="tag">${el.role}</li>
-    <li class="tag">${el.level}</li>
-    ${el.languages}
-    <li class="tag">HTML</li>
-    <li class="tag">CSS</li>
-    <li class="tag">JavaScript</li>
+    <li class="tag">${el.level}</li>   
+    ${
+      el.languages.length
+        ? `<li class="tag">${el.languages.join('</li><li class="tag">')}</li>`
+        : ""
+    }
+    ${
+      el.tools.length
+        ? `<li class="tag">${el.tools.join('</li><li class="tag">')}</li>`
+        : ""
+    }
   </ul>
 </article>`;
+};
+
+const renderLang = function (arr) {
+  arr.forEach(function (el) {
+    return `<li class="tag">${el}</li>`;
+  });
 };
 
 const renderJobs = function (data) {
@@ -90,3 +102,4 @@ ListenClick(jobOfferTags, ".tag", function (e) {
 // });
 
 getData("./data.json");
+// el.languages.forEach((e) => console.log(`<li class="tag">${e}</li>`));
