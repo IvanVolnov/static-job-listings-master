@@ -75,13 +75,6 @@ const renderJobs = function (data) {
   });
 };
 
-//Clear behaviour of job name link
-jobName.forEach((e) =>
-  e.addEventListener("click", function (e) {
-    e.preventDefault();
-  })
-);
-
 // Utilities and helpers
 const ListenClick = function (base, closest, callback) {
   base.addEventListener("click", function (e) {
@@ -97,7 +90,10 @@ const updateUI = function () {
   renderTags(filters);
 };
 
-const resetJobsList = function () {};
+const filterBlockOpacity = function () {
+  filterBlockTags.parentElement.classList.toggle("opacity");
+};
+
 //Filtering
 const filters = new Set();
 
@@ -111,20 +107,32 @@ const renderTags = function (set) {
   });
 };
 
-// jobOfferTags.addEventListener("click", function (e) {
-//   console.log(e);
-// });
+// Clear button mechanic
+clearBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  filterBlockOpacity();
+  filters.clear();
+  updateUI();
+});
 
 // init
 
 getData("./data.json");
+
+//Clear behaviour of job name link
+jobName.forEach((e) =>
+  e.addEventListener("click", function (e) {
+    e.preventDefault();
+  })
+);
 
 // events when tag clicked
 ListenClick(jobsList, ".tag", function (e) {
   let sizeBefore = filters.size;
   filters.add(e.target.innerHTML);
   if (!sizeBefore) {
-  } // TODO: show filter block
+    filterBlockOpacity();
+  }
   if (sizeBefore != filters.size) {
     updateUI();
   }
@@ -135,6 +143,6 @@ ListenClick(jobsList, ".tag", function (e) {
 //event when cross on filter clicked
 ListenClick(filterBlockTags, ".filter", function (e) {
   filters.delete(e.target.innerHTML);
+  if (!filters.size) filterBlockOpacity();
   updateUI();
-  // TODO: hide filter block checker
 });

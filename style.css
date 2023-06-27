@@ -48,6 +48,9 @@ body {
 .hidden {
   display: none;
 }
+.opacity {
+  opacity: 0;
+}
 /* Clear button */
 #clear-filter {
   font-weight: 700;
@@ -131,6 +134,7 @@ body {
 
 .filter-block {
   margin-top: 120px;
+  min-height: 4.5rem;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
@@ -140,7 +144,7 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 2.5rem;
-  gap: 1.9rem;
+  gap: 1.5rem;
 }
 
 .job-offer {
@@ -212,18 +216,18 @@ h1 {
 }
 .properties-list {
   display: flex;
-  gap: 1.16em;
+  gap: 1.1em;
 }
 
 .property {
   color: var(--color-dark-grayish);
-  font-size: 1.1em;
+  font-size: 1.2em;
   white-space: nowrap;
 }
 
 .property:nth-child(n + 2)::before {
   content: "·";
-  padding-right: 0.88em;
+  padding-right: 0.9em;
 }
 .separator {
   display: none;
